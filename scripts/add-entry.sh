@@ -2,7 +2,7 @@
 
 curl --include --request POST http://localhost:3000/entries \
   --header "Content-Type: application/json" \
-  --header "Authorization: Token token=L+apncDEz2ptz9M+KNUXsQ==" \
+  --header "Authorization: Token token=azi6hl7AawqiNpWVajJCLA==" \
   --data '{
     "content": {
       "title": "First Blog entry",
