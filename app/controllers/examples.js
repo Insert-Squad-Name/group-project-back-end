@@ -13,6 +13,7 @@ const index = (req, res, next) => {
 };
 
 const show = (req, res, next) => {
+  console.log('req.body');
   Example.findById(req.params.id)
     .then(example => example ? res.json({ example }) : next())
     .catch(err => next(err));
