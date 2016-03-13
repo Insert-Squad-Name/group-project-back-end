@@ -2,56 +2,59 @@
 
 const controller = require('lib/wiring/controller');
 const models = require('app/models');
-const Example = models.example;
+const Entry = models.entry;
 
 const authenticate = require('./concerns/authenticate');
 
 const index = (req, res, next) => {
-  Example.find()
-    .then(examples => res.json({ examples }))
+  Entry.find()
+    .then(entries => res.json({ entries }))
     .catch(err => next(err));
 };
 
 const show = (req, res, next) => {
-  console.log('req.body');
-  Example.findById(req.params.id)
-    .then(example => example ? res.json({ example }) : next())
+  Entry.findById(req.params.id)
+    .then(entry => entry ? res.json({ entry }) : next())
     .catch(err => next(err));
 };
 
 const create = (req, res, next) => {
-  let example = Object.assign(req.body.example, {
-    _owner: req.currentUser._id,
+  let entry = Object.assign(req.body, {
+    _userId: req.currentUser._id,
   });
-  Example.create(example)
-    .then(example => res.json({ example }))
+  Entry.create(entry)
+    .then(entry => res.json({ entry }))
     .catch(err => next(err));
 };
 
 const update = (req, res, next) => {
-  let search = { _id: req.params.id, _owner: req.currentUser._id };
-  Example.findOne(search)
-    .then(example => {
-      if (!example) {
+  let search = { _id: req.params.id, _userId: req.currentUser._id };
+  Entry.findOne(search)
+    .then(entry => {
+      if (!entry) {
         return next();
       }
 
-      delete req.body._owner;  // disallow owner reassignment.
-      return example.update(req.body.example)
+      delete req.body._userId;  // disallow owner reassignment.
+      return entry.update(req.body)
         .then(() => res.sendStatus(200));
     })
     .catch(err => next(err));
 };
 
 const destroy = (req, res, next) => {
-  let search = { _id: req.params.id, _owner: req.currentUser._id };
-  Example.findOne(search)
-    .then(example => {
-      if (!example) {
+  let search = { _id: req.params.id, _userId: req.currentUser._id };
+  // let searchb = { _id: req.params.id};
+
+  console.log(search);
+  Entry.findOne(search)
+    .then(entry => {
+      console.log(entry);
+      if (!entry) {
         return next();
       }
 
-      return example.remove()
+      return entry.remove()
         .then(() => res.sendStatus(200));
     })
     .catch(err => next(err));
