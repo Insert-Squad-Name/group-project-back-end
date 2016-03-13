@@ -13,11 +13,16 @@ const entrySchema = new mongoose.Schema({
       type: String,
       required: true
     },
-   _userId: {
-     type: mongoose.Schema.Types.ObjectId,
-     ref: 'User',
-     required: true,
+    _userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+      required: true,
     },
+    _pageId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Page',
+      required: true,
+    }
   }
 }, {
   timestamps: true
