@@ -32,6 +32,7 @@ const show = (req, res, next) => {
 };
 
 const signup = (req, res, next) => {
+  console.log(req.body);
   let credentials = req.body.credentials;
   let user = { email: credentials.email };
   getToken().then(token =>
