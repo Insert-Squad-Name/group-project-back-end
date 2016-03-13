@@ -28,24 +28,28 @@ const create = (req, res, next) => {
 };
 
 const update = (req, res, next) => {
-  let search = { _id: req.params.id, _owner: req.currentUser._id };
+  let search = { _id: req.params.id, _userId: req.currentUser._id };
   Entry.findOne(search)
     .then(entry => {
       if (!entry) {
         return next();
       }
 
-      delete req.body._owner;  // disallow owner reassignment.
-      return entry.update(req.body.entry)
+      delete req.body._userId;  // disallow owner reassignment.
+      return entry.update(req.body)
         .then(() => res.sendStatus(200));
     })
     .catch(err => next(err));
 };
 
 const destroy = (req, res, next) => {
-  let search = { _id: req.params.id, _owner: req.currentUser._id };
+  let search = { _id: req.params.id, _userId: req.currentUser._id };
+  // let searchb = { _id: req.params.id};
+
+  console.log(search);
   Entry.findOne(search)
     .then(entry => {
+      console.log(entry);
       if (!entry) {
         return next();
       }
