@@ -19,8 +19,8 @@ const show = (req, res, next) => {
 };
 
 const create = (req, res, next) => {
-  let entry = Object.assign(req.body.entry, {
-    _owner: req.currentUser._id,
+  let entry = Object.assign(req.body, {
+    _userId: req.currentUser._id,
   });
   Entry.create(entry)
     .then(entry => res.json({ entry }))
