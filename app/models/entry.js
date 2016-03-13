@@ -12,7 +12,12 @@ const entrySchema = new mongoose.Schema({
     body: {
       type: String,
       required: true
-    }
+    },
+   _userId: {
+     type: mongoose.Schema.Types.ObjectId,
+     ref: 'User',
+     required: true,
+    },
   }
 }, {
   timestamps: true
