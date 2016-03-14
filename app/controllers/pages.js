@@ -13,7 +13,7 @@ const index = (req, res, next) => {
 };
 
 const show = (req, res, next) => {
-  Page.findById(req.params.id)
+  Page.findById(req.params.id).populate('_entriesIds')
     .then(pages => pages ? res.json({ pages }) : next())
     .catch(err => next(err));
 };
