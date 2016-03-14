@@ -19,11 +19,11 @@ const entrySchema = new mongoose.Schema({
       ref: 'User',
       required: true,
     },
-  //   _pageId: {
-  //     type: mongoose.Schema.Types.ObjectId,
-  //     ref: 'Page',
-  //     required: true,
-  // }
+    _pageId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Page',
+      required: true,
+  }
 }, {
   timestamps: true
 });
