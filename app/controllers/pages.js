@@ -2,7 +2,7 @@
 
 const controller = require('lib/wiring/controller');
 const models = require('app/models');
-const Page = models.pages;
+const Page = models.page;
 
 const authenticate = require('./concerns/authenticate');
 
@@ -24,6 +24,7 @@ const create = (req, res, next) => {
   let pages = Object.assign(req.body, {
     _userId: req.currentUser._id,
   });
+  console.log(Page);
   Page.create(pages)
     .then(pages => res.json({ pages }))
     .catch(err => next(err));
