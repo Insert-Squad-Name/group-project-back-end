@@ -12,6 +12,10 @@ const pageSchema = new mongoose.Schema({
     ref: 'User',
     required: true,
   },
+  _entriesIds: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Entry',
+  }]
 }, {
   timestamps: true,
 });
