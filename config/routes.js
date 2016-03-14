@@ -9,7 +9,7 @@ routes.resources('pages');
 
 routes.post('/sign-up', 'users#signup');
 routes.post('/sign-in', 'users#signin');
-routes.delete('/sign-out/:id', 'users#signout');
+routes.delete('/sign-out/:id/', 'users#signout');
 routes.patch('/change-password/:id', 'users#changepw');
 routes.resources('users', { only: ['index', 'show'] });
 

@@ -3,6 +3,7 @@
 const controller = require('lib/wiring/controller');
 const models = require('app/models');
 const Entry = models.entry;
+const Page = models.page;
 
 const authenticate = require('./concerns/authenticate');
 
@@ -23,6 +24,13 @@ const create = (req, res, next) => {
     _userId: req.currentUser._id,
   });
   Entry.create(entry)
+    .then(entry => {
+      Page.findByIdAndUpdate(req.body._pageId, {$addToSet: {"_entriesIds": entry._id}}, {safe: true, upsert: true, new : true}, function(err, numAffected) {
+        if(err) {console.error(err)}
+        else {console.log(numAffected)}
+      });
+      return entry;
+    })
     .then(entry => res.json({ entry }))
     .catch(err => next(err));
 };
