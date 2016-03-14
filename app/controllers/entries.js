@@ -25,7 +25,7 @@ const create = (req, res, next) => {
   });
   Entry.create(entry)
     .then(entry => {
-      Page.findByIdAndUpdate(req.body._pageId, {$addToSet: {"_entriesIds": entry._id}}, {safe: true, upsert: true, new : true}, function(err, numAffected) {
+      Page.findByIdAndUpdate(req.body._pageId, {$addToSet: {"_entries": entry._id}}, {safe: true, upsert: true, new : true}, function(err, numAffected) {
         if(err) {console.error(err)}
         else {console.log(numAffected)}
       });

@@ -12,7 +12,7 @@ const pageSchema = new mongoose.Schema({
     ref: 'User',
     required: true,
   },
-  _entriesIds: [{
+  _entries: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Entry',
   }]
