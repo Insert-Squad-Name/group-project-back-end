@@ -5,6 +5,7 @@ const routes = require('lib/wiring/routes');
 routes.root('root#root');
 routes.resources('examples');
 routes.resources('entries');
+routes.resources('pages');
 
 routes.post('/sign-up', 'users#signup');
 routes.post('/sign-in', 'users#signin');
