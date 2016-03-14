@@ -5,6 +5,7 @@ const models = require('app/models');
 const Page = models.page;
 
 const authenticate = require('./concerns/authenticate');
+const multer = require('./concerns/multer.js');
 
 const index = (req, res, next) => {
   Page.find()
@@ -23,7 +24,6 @@ const create = (req, res, next) => {
   let pages = Object.assign(req.body, {
     _userId: req.currentUser._id,
   });
-  console.log(Page);
   Page.create(pages)
     .then(pages => res.json({ pages }))
     .catch(err => next(err));
@@ -65,5 +65,6 @@ module.exports = controller({
   update,
   destroy,
 }, { before: [
-  { method: authenticate, except: ['index', 'show'] },
+    { method: authenticate, except: ['index', 'show'], },
+    { method: multer.single(), except: ['index', 'show', 'destroy'], },
 ], });
