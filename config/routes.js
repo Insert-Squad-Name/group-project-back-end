@@ -7,6 +7,7 @@ routes.resources('examples');
 routes.resources('entries');
 routes.resources('pages');
 
+routes.get('/pages/user/:userId', 'pages#index');
 routes.post('/sign-up', 'users#signup');
 routes.post('/sign-in', 'users#signin');
 routes.delete('/sign-out/:id', 'users#signout');

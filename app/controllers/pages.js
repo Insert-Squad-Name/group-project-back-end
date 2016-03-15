@@ -8,9 +8,17 @@ const authenticate = require('./concerns/authenticate');
 const multer = require('./concerns/multer.js');
 
 const index = (req, res, next) => {
-  Page.find()
+
+  if(req.params.userId) {
+    Page.find( { _userId: req.params.userId } )
     .then(pages => res.json({ pages }))
     .catch(err => next(err));
+  }
+  else {
+    Page.find()
+      .then(pages => res.json({ pages }))
+      .catch(err => next(err));
+}
 };
 
 const show = (req, res, next) => {
