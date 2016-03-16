@@ -1,11 +1,11 @@
 # CMS
 
 Our content management system application is able to make new blogs and posts by
-communicating with our MongoDB database. For our have three different models and
-controllers (entries, pages, and users). In our pages controller we have a
-dynamic query on the url params to signal when to index all pages or the pages
-belonging only to the user. The Express api framework is used to save and
-retrieve data, more on installation and routes is listed below.
+communicating with our MongoDB database. For our database we have three
+different models and controllers (entries, pages, and users). In our pages
+controller we have a flag on the url params to signal when to index all pages or
+the pages belonging only to the user. The Express api framework is used to save
+and retrieve data, more on installation and routes is listed below.
 
 ## Routes
 
