@@ -1,8 +1,12 @@
-
 # CMS
 
-Our content management system application is able to make new blogs and posts
-by communicating with our MongoDB database.  The Express api framework is used to save and retrieve data, more on installation and routes is listed below.
+Our content management system application is able to make new blogs and posts by
+communicating with our MongoDB database. The Express api framework is used to
+save and retrieve data, more on installation and routes is listed below.
+
+## Front End
+
+[Have a Look at the Front End](https://github.com/Insert-Squad-Name/group-project-front-end)
 
 ## Routes
 
@@ -27,9 +31,9 @@ by communicating with our MongoDB database.  The Express api framework is used t
 
 ** Pages controller has a custom dynamic route listener
 
-## Front End
+## ERD
 
-[Have a Look at the Front End](https://github.com/Insert-Squad-Name/group-project-front-end)
+![ERD](http://i.imgur.com/6SazDqy.jpg)
 
 ## Dependencies
 
