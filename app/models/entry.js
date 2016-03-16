@@ -17,7 +17,10 @@ const entrySchema = new mongoose.Schema({
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Page',
       required: true,
-  }
+  },
+    $currentDate: {
+      $type: Date
+    }
 }, {
   timestamps: true
 });
