@@ -1,12 +1,35 @@
-[![General Assembly Logo](https://camo.githubusercontent.com/1a91b05b8f4d44b5bbfb83abac2b0996d8e26c92/687474703a2f2f692e696d6775722e636f6d2f6b6538555354712e706e67)](https://generalassemb.ly/education/web-development-immersive)
 
-# group-project
+# CMS
 
-A template for starting projects with `express` as an API. Includes
-authentication and common middlewares.
+Our content management system application is able to make new blogs and posts
+by communicating with our MongoDB database.  The Express api framework is used to save and retrieve data, more on installation and routes is listed below.
 
-This template follows Rails-like conventions for organizing controller and
-model code, and has a routing layer which is similar to the Rails routing DSL.
+## Routes
+
+### Authentication
+
+| Verb   | URI Pattern            | Controller#Action |
+|--------|------------------------|-------------------|
+| POST   | `/sign-up`             | `users#signup`    |
+| POST   | `/sign-in`             | `users#signin`    |
+| PATCH  | `/change-password/:id` | `users#changepw`  |
+| DELETE | `/sign-out/:id`        | `users#signout`   |
+
+### Controller Routes
+
+| Verb   | URI Pattern            | Controller#Action    |
+|--------|------------------------|----------------------|
+| GET    | `/{controller}`        | `controller#index`   |
+| GET    | `/{controller}/:id`    | `controller#show`    |
+| POST   | `/{controller}`        | `controller#create`  |
+| PATCH  | `/{controller}/:id`    | `controller#update`  |
+| DELETE | `/{controller}/:id`    | `controller#destroy` |
+
+** Pages controller has a custom dynamic route listener
+
+## Front End
+
+[Have a Look at the Front End](https://github.com/Insert-Squad-Name/group-project-front-end)
 
 ## Dependencies
 
